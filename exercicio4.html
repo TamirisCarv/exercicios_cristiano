@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4 </title>
+</head>
+
+<body>
+    <h2>
+        Clique para dividir o vetor [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] em pedaços
+    </h2>
+
+
+
+    <input type="button" value="Dividir" onclick="dividir()">
+    <div id="resultado"> </div>
+
+
+    <script>
+        let vetor = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], novoArray = []
+            , corte = 3;
+
+        let dividir = function () {
+
+            for (var i = 0; i < vetor.length; i = i + corte) {
+                novoArray.push(vetor.slice(i, i + corte));
+            }
+
+            console.log(novoArray);
+
+        }
+
+    </script>
+</body>
+
+</html>

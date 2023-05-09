@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pilha e Fila</title>
+</head>
+<body>
+	<h1>Pilha e Fila</h1>
+
+	<h2>Pilha</h2>
+	<input type="text" id="pilha-input">
+  <input type="button" value="Empilhar" id="empilhar" onclick="pilhaPush()" />
+  <input type="button" value="Desempilhar" id="Desempilhar" onclick="pilhaPop()" />
+  <input type="button" value="Topo" id="topo" onclick="pilhaTop()" />
+  <input type="button" value="Iniciar" id="iniciar" onclick="pilhaInit()" />
+
+	<h2>Elementos da pilha: <div id="pilha-elements"></div></h2>
+
+	<h2>Fila</h2>
+	<input type="text" id="fila-input">
+  <input type="button" value="Enfileirar" id="enfileirar" onclick="filaEnqueue()" />
+  <input type="button" value="Desenfileirar" id="desenfileirar" onclick="filaDequeue()" />
+  <input type="button" value="Vazia" id="isEmpty" onclick="filaIsEmpty()" />
+  <input type="button" value="Cheia" id="isFull" onclick="filaIsFull()" />
+  <input type="button" value="Tamanho" id="tamanho" onclick="tamanhoFila()" />
+
+	<h2>Elementos da fila: <div id="fila-elements"></div></h2>
+
+	<script>
+		
+		let pilha = [];
+		const PILHA_CAPACIDADE = 10;
+
+		function pilhaPush() {
+			const elemento = document.getElementById("pilha-input").value;
+			if (pilha.length < PILHA_CAPACIDADE) {
+				pilha.push(elemento);
+				atualizarPilha();
+			} else {
+				alert("A pilha está cheia");
+			}
+		}
+
+		function pilhaPop() {
+			if (pilha.length > 0) {
+				pilha.pop();
+				atualizarPilha();
+			} else {
+				alert("A pilha está vazia");
+			}
+		}
+
+		function pilhaTop() {
+			if (pilha.length > 0) {
+				const topo = pilha[pilha.length-1];
+				alert("O topo da pilha é: " + topo);
+			} else {
+				alert("A pilha está vazia");
+			}
+		}
+
+		function pilhaInit() {
+			pilha = [];
+			atualizarPilha();
+		}
+
+		function atualizarPilha() {
+			const elementos = pilha.join(", ");
+			document.getElementById("pilha-elements").textContent = elementos;
+		}
+
+		
+		let fila = [];
+		const FILA_CAPACIDADE = 10;
+
+		function filaEnqueue() {
+			const elemento = document.getElementById("fila-input").value;
+			if (fila.length < FILA_CAPACIDADE) {
+				fila.push(elemento);
+				atualizarFila();
+			} else {
+				alert("A fila está cheia");
+			}
+		}
+
+		function filaDequeue() {
+			if (fila.length > 0) {
+				fila.shift();
+				atualizarFila();
+			} else {
+				alert("A fila está vazia");
+			}
+		}
+
+		function filaIsEmpty() {
+			const vazia = fila.length === 0;
+			if (vazia) {
+				alert("A fila está vazia");
+			} else {
+				alert("A fila não está vazia");
+			}
+		}
+
+		function filaIsFull() {
+			const cheia = fila.length === FILA_CAPACIDADE;
+			if (cheia) {
+				alert("A fila está cheia");
+      } else {
+			alert("A fila não está cheia");
+		}
+	}
+  function tamanhoFila() {
+  const tamanho = fila.length;
+  alert("O tamanho da fila é: " + tamanho);
+}
+
+	function atualizarFila() {
+		const elementos = fila.join(", ");
+		document.getElementById("fila-elements").textContent = elementos;
+	}
+</script>
+</body>
+</html>

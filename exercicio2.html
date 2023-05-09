@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+</head>
+
+<body>
+    <h2>
+       Array com valores ordenados
+    </h2>
+    <input type="button" value="Concatenar" onclick="retornarVetorConcatenado()">
+   
+
+    <script>
+       let vetor = [5, 100, 40, 28, 10, 20, -70, -9];
+       let vetor2 = [11, 30, 8, 12, 60];
+       let concatenar = vetor.concat(vetor2);
+
+        const retornarVetorConcatenado = function () {
+
+            concatenar.sort(function (a, b) {
+                return a - b;
+            });
+            console.table(concatenar);
+
+        }
+       
+
+    </script>
+</body>
+
+</html>

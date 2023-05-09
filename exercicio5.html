@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exercício 5 </title>
+</head>
+
+
+<body>
+   
+
+    <h1>Agenda</h1>
+    <form>
+        <label for="nome">Nome:</label> <input type="text" id="nome"><br>
+
+        <label for="endereco">Endereço:</label> <input type="text" id="endereco"><br>
+
+        <label for="telefone">Telefone:</label><input type="text" id="telefone"><br>
+
+        <label for="email">Email:</label><input type="text" id="email"><br>
+
+        <button type="button" onclick="inserirContato()">Inserir</button>
+    </form>
+
+    <br>
+    <button type="button" onclick="mostrarContatos()">Mostrar Contatos</button>
+    <br>
+    <br>
+
+    <form>
+        <label for="nome-consulta"> Digite o nome para consultar: </label>
+        <input type="text" id="nome-consulta"><br>
+        <button type="button" onclick="consultarContato()">Consultar</button>
+    </form>
+    <br>
+
+    <form>
+        <label for="index-remocao">Remover pelo Índice:</label>
+        <input type="text" id="index-remocao"><br>
+        <button type="button" onclick="removerContato()">Remover</button>
+    </form>
+    <br>
+
+    <form>
+        <label for="index-edicao">Editar pelo Índice:</label>
+
+        <input type="text" id="index-edicao"><br>
+        <label for="nome-edicao">Novo Nome:</label>
+        <input type="text" id="nome-edicao"><br>
+        <label for="endereco-edicao">Novo Endereço:</label>
+        <input type="text" id="endereco-edicao"><br>
+        <label for="telefone-edicao">Novo Telefone:</label>
+        <input type="text" id="telefone-edicao"><br>
+        <label for="email-edicao">Novo Email:</label>
+        <input type="text" id="email-edicao"><br>
+        <button type="button" onclick="editarContato()">Editar</button>
+    </form>
+    <div id="resultado"> </div>
+
+    <script>
+
+        let agenda = [];
+
+
+        function inserirContato() {
+            let nome = document.getElementById("nome").value;
+            let endereco = document.getElementById("endereco").value;
+            let telefone = document.getElementById("telefone").value;
+            let email = document.getElementById("email").value;
+            let novoContato = { nome: nome, endereco: endereco, telefone: telefone, email: email };
+            agenda.push(novoContato);
+            ordenarPorNome();
+        }
+
+        function editarContato() {
+            let index = document.getElementById("index-edicao").value;
+            let nome = document.getElementById("nome-edicao").value;
+            let endereco = document.getElementById("endereco-edicao").value;
+            let telefone = document.getElementById("telefone-edicao").value;
+            let email = document.getElementById("email-edicao").value;
+            let contatoEditado = { nome: nome, endereco: endereco, telefone: telefone, email: email };
+            agenda[index] = contatoEditado;
+            ordenarPorNome();
+        }
+
+        function removerContato() {
+            let index = document.getElementById("index-remocao").value;
+            agenda.splice(index, 1);
+        }
+
+
+        function consultarContato() {
+            let nomeConsulta = document.getElementById("nome-consulta").value;
+            let resultado = agenda.filter(contato => contato.nome === nomeConsulta);
+            document.getElementById('resultado').innerHTML = (JSON.stringify(resultado) + '<br>');
+
+
+        }
+
+        function mostrarContatos() {
+            let lista = "";
+            for (let i = 0; i < agenda.length; i++) {
+                lista += "Índice: " + i + " | Nome: " + agenda[i].nome + " | Endereço: " + agenda[i].endereco + " | Telefone: " + agenda[i].telefone + " | Email: " + agenda[i].email + "\n";
+            }
+            document.getElementById('resultado').innerHTML = '<h3><br> ' + lista + '<br></h3> ';
+        }
+
+        function ordenarPorNome() {
+            agenda.sort((a, b) => (a.nome > b.nome) ? 1 : -1);
+        }
+    </script>
+</body>
+
+</html>

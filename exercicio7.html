@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 7 </title>
+</head>
+
+<body>
+    <h1>Brasil</h1>
+
+
+    <input type="button" value="Cidades Sudeste" id="sudeste" onclick="Sudeste()" />
+    <input type="button" value="Cidades Sul" id="sul" onclick="Sul()" />
+    <input type="button" value="Cidades Norte" id="norte" onclick="Norte()" />
+    <input type="button" value="Cidades CentroOeste" id="centrooeste" onclick="CentroOeste()" />
+    <input type="button" value="Cidades Nordeste" id="nordeste" onclick="Nordeste()" />
+    <input type="button" value="Habitantes" id="habitantes" onclick="habitantes()" />
+    <input type="button" value="Cidades SP" id="estadosp" onclick="EstadoSP()" />
+    <input type="button" value="Cidades MS" id="estadoms" onclick="EstadoMS()" />
+    <div id="resultado"> </div>
+
+    <script>
+
+        const brasil = [
+            { cidade: "Jales", estado: "SP", regiao: "Sudeste", populacao: 49000 },
+            { cidade: "Aquidauana", estado: "MS", regiao: "Centro Oeste", populacao: 45000 },
+            { cidade: "Três Fronteiras", estado: "SP", regiao: "Sudeste", populacao: 10000 },
+            { cidade: "Bonito", estado: "MS", regiao: "Centro Oeste", populacao: 15000 },
+            { cidade: "Brusque", estado: "SC", regiao: "Sul", populacao: 80000 },
+            { cidade: "Porto Alegre", estado: "RS", regiao: "Sul", populacao: 1200000 },
+            { cidade: "Urânia", estado: "SP", regiao: "Sudeste", populacao: 19000 },
+            { cidade: "Manaus", estado: "AM", regiao: "Norte", populacao: 900000 },
+            { cidade: "Macapá", estado: "AP", regiao: "Norte", populacao: 500000 },
+            { cidade: "Fortaleza", estado: "CE", regiao: "Nordeste", populacao: 700000 },
+            { cidade: "Natal", estado: "RN", regiao: "Nordeste", populacao: 650000 }
+        ];
+
+        function Sudeste() {
+            const cidadesSudeste = brasil.filter(cidade => cidade.regiao === "Sudeste").map(cidade => cidade.cidade);
+            document.getElementById('resultado').innerHTML = "Cidades da Região Sudeste:" + cidadesSudeste;
+        }
+
+        function Sul() {
+            const cidadesSul = brasil.filter(cidade => cidade.regiao === "Sul").map(cidade => cidade.cidade);
+            document.getElementById('resultado').innerHTML = "Cidades da Região Sul:" + cidadesSul;
+        }
+
+        function Norte() {
+            const cidadesNorte = brasil.filter(cidade => cidade.regiao === "Norte").map(cidade => cidade.cidade);
+            document.getElementById('resultado').innerHTML = "Cidades da Região Norte:" + cidadesNorte;
+        }
+
+        function CentroOeste() {
+            const cidadesCentroOeste = brasil.filter(cidade => cidade.regiao === "Centro Oeste").map(cidade => cidade.cidade);
+            document.getElementById('resultado').innerHTML = "Cidades da Região Centro Oeste:" + cidadesCentroOeste;
+        }
+
+        function Nordeste() {
+            const cidadesNordeste = brasil.filter(cidade => cidade.regiao === "Nordeste").map(cidade => cidade.cidade);
+            document.getElementById('resultado').innerHTML = "Cidades da Região Nordeste:" + cidadesNordeste;
+        }
+
+        function habitantes() {
+            const cidadesMenosDe50000 = brasil.filter(cidade => cidade.populacao < 50000).map(cidade => cidade.cidade);
+            document.getElementById('resultado').innerHTML = "Cidades com menos de 50000 habitantes:" + cidadesMenosDe50000;
+        }
+
+        function EstadoSP() {
+            const cidadesSP = brasil.filter(cidade => cidade.estado === "SP").map(cidade => cidade.cidade);
+            document.getElementById('resultado').innerHTML = "Cidades do Estado de SP:" + cidadesSP;
+        }
+        function EstadoMS() {
+            const cidadesMS = brasil.filter(cidade => cidade.estado === "MS").map(cidade => cidade.cidade);
+            document.getElementById('resultado').innerHTML = "Cidades do Estado de SP:" + cidadesMS;
+        }
+
+
+    </script>
+</body>
+
+</html>
